@@ -37,8 +37,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Ligados Notion Library cargada correctamente.');
 
-            // Fetch del próximo evento desde el proxy seguro
-            fetch('/api/next-event')
+            // Fetch del próximo evento desde la Netlify Function segura
+            fetch('/.netlify/functions/next-event')
                 .then(response => response.json())
                 .then(data => {
                     const detailsEl = document.getElementById('event-details');
