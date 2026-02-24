@@ -150,11 +150,15 @@ footer {
 /* Mobile Optimizations */
 @media (max-width: 768px) {
     main {
-        padding: 0.75rem;
+        padding: 0;
+        /* Eliminado el margen lateral */
     }
 
     .notion-wrapper {
-        border-radius: 12px;
+        border-radius: 0;
+        /* Eliminados bordes redondeados */
+        border-left: none;
+        border-right: none;
     }
 
     iframe {
