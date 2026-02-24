@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ligados | Notion Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="bg-glow"></div>
+
+    <header class="fade-in">
+        <div class="logo-container">
+            <h1>Repertorio Gospel Praise</h1>
+        </div>
+        <div id="event-banner" class="event-banner fade-in" style="animation-delay: 0.1s;">
+            <span class="event-label">PRÓXIMO EVENTO:</span>
+            <span id="event-details" class="event-details">Cargando...</span>
+        </div>
+    </header>
+
+    <main class="fade-in" style="animation-delay: 0.2s;">
+        <div class="notion-wrapper">
+            <iframe src="https://ligados.notion.site/ebd/a7d3ef6041ee4ed4898ecb6a13c313df?v=3" frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+
+    <footer class="fade-in" style="animation-delay: 0.4s;">
+        <p>&copy; 2024 Ligados. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Ligados Notion Library cargada correctamente.');
+
+            // Fetch del próximo evento desde el proxy seguro
+            fetch('/api/next-event')
+                .then(response => response.json())
+                .then(data => {
+                    const detailsEl = document.getElementById('event-details');
+                    if (data.summary) {
+                        const date = new Date(data.start);
+                        const options = { day: 'numeric', month: 'short' };
+                        const dateString = date.toLocaleDateString('es-ES', options);
+                        detailsEl.textContent = `${dateString.toUpperCase()} - ${data.summary.toUpperCase()}`;
+                    } else {
+                        detailsEl.textContent = "SIN EVENTOS PRÓXIMOS";
+                    }
+                })
+                .catch(err => {
+                    console.error('Error fetching event:', err);
+                    document.getElementById('event-details').textContent = "ERROR AL CARGAR";
+                });
+        });
+    </script>
+</body>
+
+</html>
