@@ -134,10 +134,10 @@ main {
 
 iframe {
     width: 100%;
-    height: calc(100% + 45px);
-    /* Compensamos el margen negativo */
-    margin-top: -45px;
-    /* OCULTA LA BARRA SUPERIOR (Get Notion free, etc) */
+    height: calc(100% + 38px);
+    /* Compensamos el margen negativo (ajustado de 45 a 38) */
+    margin-top: -38px;
+    /* OCULTA PARTE DE LA BARRA SUPERIOR SIN CORTAR EL BUSCADOR */
     border: none;
     display: block;
 }
